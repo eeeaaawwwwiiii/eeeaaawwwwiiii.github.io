@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0d1117"/>
+      <stop offset="1" stop-color="#141024"/>
+    </linearGradient>
+    <radialGradient id="glow3" cx="30%" cy="55%" r="60%">
+      <stop offset="0" stop-color="#7c5cff" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#7c5cff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="450" fill="url(#bg3)"/>
+  <rect width="900" height="450" fill="url(#glow3)"/>
+  <g stroke="#7c5cff" stroke-width="2" fill="none" opacity="0.8">
+    <polyline points="140,150 260,150 300,190 420,190"/>
+    <polyline points="140,300 240,300 280,260 400,260 440,300 560,300"/>
+    <polyline points="620,120 700,120 740,160 820,160"/>
+  </g>
+  <g fill="#b7a6ff">
+    <circle cx="140" cy="150" r="6"/><circle cx="420" cy="190" r="6"/>
+    <circle cx="140" cy="300" r="6"/><circle cx="560" cy="300" r="6"/>
+    <circle cx="620" cy="120" r="6"/><circle cx="820" cy="160" r="6"/>
+  </g>
+  <text x="700" y="330" font-family="Consolas,Menlo,monospace" font-size="90" fill="#b7a6ff" opacity="0.9">&lt;/&gt;</text>
+</svg>

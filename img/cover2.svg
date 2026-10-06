@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b0f16"/>
+      <stop offset="1" stop-color="#0e1515"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="450" fill="url(#bg2)"/>
+  <g font-family="Consolas,Menlo,monospace" font-size="24" fill="#7ee787">
+    <text x="70" y="70" opacity="0.10">01101001 01101110 01110100</text>
+    <text x="150" y="120" opacity="0.16">11010010 00101101 0110</text>
+    <text x="60" y="175" opacity="0.24">01101000 01100001 01100011 01101011</text>
+    <text x="200" y="230" opacity="0.30">10110010 01100101 01110110</text>
+    <text x="90" y="290" opacity="0.20">01000011 01010100 01000110</text>
+    <text x="180" y="350" opacity="0.14">01110010 01100101 01110110</text>
+    <text x="640" y="105" opacity="0.85">01</text>
+    <text x="700" y="160" opacity="0.75">10</text>
+    <text x="760" y="120" opacity="0.65">11</text>
+    <text x="660" y="230" opacity="0.80">00</text>
+    <text x="730" y="300" opacity="0.70">01</text>
+    <text x="800" y="260" opacity="0.60">10</text>
+  </g>
+  <rect x="640" y="330" width="24" height="36" fill="#7ee787" opacity="0.9"/>
+</svg>
