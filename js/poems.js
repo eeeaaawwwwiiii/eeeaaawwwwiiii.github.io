@@ -48,13 +48,13 @@
   var rand = function (a, b) { return a + Math.random() * (b - a); };
   var last = -1;
 
-  /* —— 微烟花：一圈金/青火花 + 一个扩散光圈 —— */
+  /* —— 微烟花：一圈金/绿火花 + 一个扩散光圈 —— */
   function spawnSparks(x, y) {
     var ring = document.createElement("span");
     ring.className = "click-spark";
     ring.style.cssText =
       "left:" + x + "px;top:" + y + "px;width:14px;height:14px;" +
-      "margin:-7px 0 0 -7px;border:2px solid rgba(255,215,122,.8);" +
+      "margin:-7px 0 0 -7px;border:2px solid rgba(220,170,70,.85);" +
       "background:transparent;box-sizing:border-box;";
     document.body.appendChild(ring);
     ring.animate(
@@ -74,8 +74,8 @@
       s.style.cssText =
         "left:" + x + "px;top:" + y + "px;width:" + size + "px;height:" + size + "px;" +
         "margin:" + (-size / 2) + "px 0 0 " + (-size / 2) + "px;background:" +
-        (gold ? "#ffd77a" : "#6fe3d8") + ";box-shadow:0 0 6px " +
-        (gold ? "rgba(255,205,102,.9)" : "rgba(0,196,182,.9)") + ";";
+        (gold ? "#e8b74e" : "#7ac555") + ";box-shadow:0 0 6px " +
+        (gold ? "rgba(220,170,70,.9)" : "rgba(122,197,85,.9)") + ";";
       document.body.appendChild(s);
 
       var ang = rand(0, Math.PI * 2);
