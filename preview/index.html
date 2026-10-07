@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>首页顶部背景方案预览</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:#fff}
+
+  .hero{position:relative;height:100vh;min-height:540px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+
+  .label{position:absolute;top:18px;left:18px;z-index:60;background:rgba(51,82,31,.88);color:#fff;font-size:13px;padding:6px 14px;border-radius:999px;letter-spacing:1px}
+  .note{position:absolute;top:22px;right:18px;z-index:60;color:#71876a;font-size:12.5px;background:rgba(255,255,255,.72);padding:5px 12px;border-radius:999px;backdrop-filter:blur(4px)}
+
+  .site-info{position:relative;z-index:30;text-align:center;padding:0 16px}
+  .site-title{color:#33521f;font-size:clamp(2rem,5vw,2.85rem);font-weight:700;letter-spacing:3px;text-shadow:0 0 22px rgba(122,197,85,.55)}
+  .site-sub{color:#5c7a4a;font-size:clamp(1rem,2.6vw,1.72rem);margin-top:10px;opacity:.92}
+  .cursor{display:inline-block;margin-left:3px;color:#5c7a4a;animation:blink 1s step-end infinite;font-weight:300}
+  @keyframes blink{50%{opacity:0}}
+  .arrow{display:block;margin:28px auto 0;width:max-content;font-size:20px;color:rgba(51,82,31,.7);transform:rotate(90deg);animation:heroArrow 1.6s ease-in-out infinite}
+  @keyframes heroArrow{0%,100%{transform:rotate(90deg) translateY(0);opacity:.65}50%{transform:rotate(90deg) translateY(8px);opacity:1}}
+
+  /* ===== 方案0：当前线上的样子（对照） ===== */
+  .bg0{background-image:radial-gradient(ellipse at 50% 38%, rgba(122,197,85,.20), rgba(122,197,85,0) 62%)}
+
+  /* ===== 方案1：柔光渐层 ===== */
+  .bg1{background:linear-gradient(180deg,#e9f6e2 0%,#f4faf0 45%,#fcfdfc 100%)}
+  .bg1::before{content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse 58% 48% at 28% 30%, rgba(122,197,85,.24), transparent 65%),
+      radial-gradient(ellipse 48% 42% at 76% 22%, rgba(154,222,116,.20), transparent 62%),
+      radial-gradient(ellipse 70% 55% at 50% 106%, rgba(122,197,85,.14), transparent 70%)}
+
+  /* ===== 方案2：远山层叠（SVG 见 body） ===== */
+  .bg2 svg.mountains{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+
+  /* ===== 方案3：点阵网格 ===== */
+  .bg3{background:#fbfdf9}
+  .bg3::before{content:"";position:absolute;inset:0;
+    background-image:radial-gradient(rgba(122,197,85,.38) 1.3px, transparent 1.3px);
+    background-size:22px 22px;
+    -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.85),rgba(0,0,0,.30) 62%,transparent);
+    mask-image:linear-gradient(180deg,rgba(0,0,0,.85),rgba(0,0,0,.30) 62%,transparent)}
+  .bg3::after{content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse 55% 45% at 50% 34%, rgba(154,222,116,.22), transparent 70%)}
+
+  /* ===== 方案4：代码雨 ===== */
+  .bg4{background:#fbfdf9}
+  .bg4 canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;opacity:.5}
+
+  /* ===== 方案5：极光光斑 ===== */
+  .bg5{background:#fcfefb}
+  .bg5 .blob{position:absolute;border-radius:50%;filter:blur(64px);z-index:0}
+  .bg5 .b1{width:46vw;height:46vw;left:-10vw;top:-14vw;background:radial-gradient(circle,#b7e6a2,transparent 70%)}
+  .bg5 .b2{width:40vw;height:40vw;right:-8vw;top:-6vw;background:radial-gradient(circle,#cdeede,transparent 70%)}
+  .bg5 .b3{width:52vw;height:36vw;left:24vw;bottom:-16vw;background:radial-gradient(circle,#e2f4cf,transparent 72%)}
+
+  /* ===== 方案6：波纹等高线 ===== */
+  .bg6{background:linear-gradient(180deg,#f5fbf1,#fdfefd)}
+  .bg6::before{content:"";position:absolute;inset:0;
+    background:repeating-radial-gradient(ellipse 95% 75% at 50% 118%, rgba(122,197,85,.20) 0 2px, transparent 2px 52px);
+    -webkit-mask-image:linear-gradient(180deg,transparent, #000 38%);
+    mask-image:linear-gradient(180deg,transparent, #000 38%)}
+
+  .hint{position:fixed;right:16px;bottom:16px;z-index:99;background:rgba(51,82,31,.9);color:#fff;font-size:13px;padding:8px 14px;border-radius:10px;box-shadow:0 4px 16px rgba(0,0,0,.18)}
+</style>
+</head>
+<body>
+
+<!-- 方案0：当前 -->
+<section class="hero bg0">
+  <span class="label">现在线上的样子（对照）</span>
+  <span class="note">纯光晕，略空</span>
+  <div class="site-info">
+    <h1 class="site-title">学习手记</h1>
+    <p class="site-sub">逆向 / 安全 / 学习记录<span class="cursor">|</span></p>
+    <span class="arrow">❯</span>
+  </div>
+</section>
+
+<!-- 方案1 -->
+<section class="hero bg1">
+  <span class="label">方案 1 · 柔光渐层</span>
+  <span class="note">浅绿渐变 + 三团柔光，最稳最干净</span>
+  <div class="site-info">
+    <h1 class="site-title">学习手记</h1>
+    <p class="site-sub">逆向 / 安全 / 学习记录<span class="cursor">|</span></p>
+    <span class="arrow">❯</span>
+  </div>
+</section>
+
+<!-- 方案2 -->
+<section class="hero bg2">
+  <span class="label">方案 2 · 远山层叠</span>
+  <span class="note">多层山峦剪影，画面感最强</span>
+  <svg class="mountains" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#f3fbee"/>
+        <stop offset="1" stop-color="#fdfefd"/>
+      </linearGradient>
+      <radialGradient id="sun2" cx="50%" cy="30%" r="42%">
+        <stop offset="0" stop-color="#d9f2c8" stop-opacity="0.75"/>
+        <stop offset="1" stop-color="#d9f2c8" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="1440" height="900" fill="url(#sky2)"/>
+    <rect width="1440" height="900" fill="url(#sun2)"/>
+    <path d="M0,560 C220,500 380,570 640,540 C900,510 1120,560 1440,520 L1440,900 L0,900 Z" fill="#ddf1d2"/>
+    <path d="M0,640 C260,590 460,650 760,610 C1020,575 1240,630 1440,600 L1440,900 L0,900 Z" fill="#cbe9b9"/>
+    <path d="M0,720 C300,670 520,730 820,690 C1080,655 1280,705 1440,680 L1440,900 L0,900 Z" fill="#b4e09e"/>
+    <path d="M0,800 C360,760 600,810 900,775 C1140,748 1320,790 1440,770 L1440,900 L0,900 Z" fill="#9ad57f"/>
+  </svg>
+  <div class="site-info">
+    <h1 class="site-title">学习手记</h1>
+    <p class="site-sub">逆向 / 安全 / 学习记录<span class="cursor">|</span></p>
+    <span class="arrow">❯</span>
+  </div>
+</section>
+
+<!-- 方案3 -->
+<section class="hero bg3">
+  <span class="label">方案 3 · 点阵网格</span>
+  <span class="note">极简科技风，点阵向下渐隐</span>
+  <div class="site-info">
+    <h1 class="site-title">学习手记</h1>
+    <p class="site-sub">逆向 / 安全 / 学习记录<span class="cursor">|</span></p>
+    <span class="arrow">❯</span>
+  </div>
+</section>
+
+<!-- 方案4 -->
+<section class="hero bg4">
+  <span class="label">方案 4 · 代码雨</span>
+  <span class="note">淡淡的字符雨，安全站气质拉满</span>
+  <canvas id="rain"></canvas>
+  <div class="site-info">
+    <h1 class="site-title">学习手记</h1>
+    <p class="site-sub">逆向 / 安全 / 学习记录<span class="cursor">|</span></p>
+    <span class="arrow">❯</span>
+  </div>
+</section>
+
+<!-- 方案5 -->
+<section class="hero bg5">
+  <span class="label">方案 5 · 极光光斑</span>
+  <span class="note">大团模糊光斑，梦幻一点</span>
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="site-info">
+    <h1 class="site-title">学习手记</h1>
+    <p class="site-sub">逆向 / 安全 / 学习记录<span class="cursor">|</span></p>
+    <span class="arrow">❯</span>
+  </div>
+</section>
+
+<!-- 方案6 -->
+<section class="hero bg6">
+  <span class="label">方案 6 · 波纹等高线</span>
+  <span class="note">等高线圈纹，从底部荡开</span>
+  <div class="site-info">
+    <h1 class="site-title">学习手记</h1>
+    <p class="site-sub">逆向 / 安全 / 学习记录<span class="cursor">|</span></p>
+    <span class="arrow">❯</span>
+  </div>
+</section>
+
+<div class="hint">选好了跟我说方案编号 👌</div>
+
+<script>
+/* 方案4 代码雨 */
+(function () {
+  var c = document.getElementById('rain');
+  if (!c) return;
+  var ctx = c.getContext('2d');
+  var chars = "01<>{}[]#$/\\|=+*;:";
+  var fs = 14, gap = 7, drops = [];
+  function resize() {
+    c.width = c.offsetWidth;
+    c.height = c.offsetHeight;
+    var cols = Math.ceil(c.width / (fs + gap));
+    drops = [];
+    for (var i = 0; i < cols; i++) drops[i] = Math.random() * -80;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  setInterval(function () {
+    ctx.fillStyle = 'rgba(251,253,249,.14)';
+    ctx.fillRect(0, 0, c.width, c.height);
+    ctx.font = fs + 'px Consolas, monospace';
+    for (var i = 0; i < drops.length; i++) {
+      ctx.fillStyle = Math.random() < 0.15 ? 'rgba(61,139,38,.75)' : 'rgba(111,206,75,.55)';
+      ctx.fillText(chars[Math.floor(Math.random() * chars.length)], i * (fs + gap), drops[i] * fs);
+      if (drops[i] * fs > c.height && Math.random() > 0.972) drops[i] = 0;
+      drops[i] += 0.5;
+    }
+  }, 70);
+})();
+</script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 /* 点击诗句特效 v2 —— 李清照 / 辛弃疾 / 李白 / 李煜
- * 效果：诗句随机大小 / 角度 / 摆动方向弹性弹出；点击处伴随金色微烟花（火花 + 光圈）。
+ * 效果：诗句随机大小 / 角度 / 摆动方向弹性弹出；点击处伴随绿色微烟花（火花 + 光圈）。
  * 想加诗句：往 POEMS 数组里加一行字符串即可（记得用英文引号包住）。
  */
 (function () {
@@ -48,13 +48,13 @@
   var rand = function (a, b) { return a + Math.random() * (b - a); };
   var last = -1;
 
-  /* —— 微烟花：一圈金/绿火花 + 一个扩散光圈 —— */
+  /* —— 微烟花：一圈绿火花 + 一个扩散光圈 —— */
   function spawnSparks(x, y) {
     var ring = document.createElement("span");
     ring.className = "click-spark";
     ring.style.cssText =
       "left:" + x + "px;top:" + y + "px;width:14px;height:14px;" +
-      "margin:-7px 0 0 -7px;border:2px solid rgba(220,170,70,.85);" +
+      "margin:-7px 0 0 -7px;border:2px solid rgba(122,197,85,.9);" +
       "background:transparent;box-sizing:border-box;";
     document.body.appendChild(ring);
     ring.animate(
@@ -70,12 +70,12 @@
       var s = document.createElement("span");
       s.className = "click-spark";
       var size = rand(3, 5.5);
-      var gold = Math.random() < 0.72;
+      var bright = Math.random() < 0.72;
       s.style.cssText =
         "left:" + x + "px;top:" + y + "px;width:" + size + "px;height:" + size + "px;" +
         "margin:" + (-size / 2) + "px 0 0 " + (-size / 2) + "px;background:" +
-        (gold ? "#e8b74e" : "#7ac555") + ";box-shadow:0 0 6px " +
-        (gold ? "rgba(220,170,70,.9)" : "rgba(122,197,85,.9)") + ";";
+        (bright ? "#9ade74" : "#6fce4b") + ";box-shadow:0 0 6px " +
+        (bright ? "rgba(154,222,116,.9)" : "rgba(111,206,75,.9)") + ";";
       document.body.appendChild(s);
 
       var ang = rand(0, Math.PI * 2);
